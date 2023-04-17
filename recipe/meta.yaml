@@ -23,7 +23,6 @@ requirements:
   run:
     - arpeggio >=2.0.0
     - click >=7.0,<8.0
-    - future
     - python >=3.6
 
 test:
@@ -31,6 +30,9 @@ test:
     - tests
   imports:
     - textx
+    - textx.scoping
+    - textx.cli
+    
   commands:
     - pip check
     - textx --help
@@ -41,9 +43,8 @@ test:
     - pip install -e tests/functional/registration/projects/data_dsl --no-deps
     - pip install -e tests/functional/registration/projects/flow_dsl --no-deps
     - pip install -e tests/functional/registration/projects/flow_codegen --no-deps
-    - pytest -vvv --capture=tee-sys tests/functional  # [unix]
-    # The assertion for these tests is written for linux/osx output only
-    - pytest -vvv --capture=tee-sys -k "not test_generating_flow_model and not test_generate_by_providing_explicit_language_name and not test_passing_custom_arguments_to_generator" tests/functional  # [win]
+    # Need to skip a couple test before upstream excluded some test files from sdist
+    - pytest -vvv --capture=tee-sys -k "not test_examples" tests/functional
   requires:
     - attrs
     - html5lib
