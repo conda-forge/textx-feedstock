@@ -1,5 +1,5 @@
 {% set name = "textx" %}
-{% set version = "3.0.0" %}
+{% set version = "3.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/textX-{{ version }}.tar.gz
-  sha256: cd432adb82e348960cecdcabe68dbb916fe6eb2e4cb067c4a4b68b8c9ec51acf
+  sha256: e2fb7d090ea4a71f8bf2f0303770275c42a5f73854b4e7f6adfcdbe368fab0fa
 
 build:
   entry_points:
@@ -36,11 +36,11 @@ test:
     - textx --help
     # This test file is causing problem can't easily exclude by pytest commands
     - rm tests/functional/test_objcrossref_positions.py
-    - pip install -e tests/functional/subcommands/example_project --no-deps 
+    - pip install -e tests/functional/subcommands/example_project --no-deps
     - pip install -e tests/functional/registration/projects/types_dsl --no-deps
-    - pip install -e tests/functional/registration/projects/data_dsl --no-deps 
-    - pip install -e tests/functional/registration/projects/flow_dsl --no-deps 
-    - pip install -e tests/functional/registration/projects/flow_codegen --no-deps 
+    - pip install -e tests/functional/registration/projects/data_dsl --no-deps
+    - pip install -e tests/functional/registration/projects/flow_dsl --no-deps
+    - pip install -e tests/functional/registration/projects/flow_codegen --no-deps
     - pytest -vvv --capture=tee-sys tests/functional  # [unix]
     # The assertion for these tests is written for linux/osx output only
     - pytest -vvv --capture=tee-sys -k "not test_generating_flow_model and not test_generate_by_providing_explicit_language_name and not test_passing_custom_arguments_to_generator" tests/functional  # [win]
