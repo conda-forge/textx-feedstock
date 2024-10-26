@@ -1,5 +1,5 @@
 {% set name = "textx" %}
-{% set version = "4.0.1" %}
+{% set version = "4.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 84aff5c95fd2c947402fcbe83eeeddc23aabcfed3464ab84184ef193c52d831a
+  sha256: 37b4f0c455452e27cc0f13d40777b5d20549eaa871311b26e2ed83c019456692
 
 build:
   entry_points:
