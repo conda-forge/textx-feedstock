@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 37b4f0c455452e27cc0f13d40777b5d20549eaa871311b26e2ed83c019456692
 
 build:
@@ -14,17 +14,18 @@ build:
     - textx = textx.cli:textx
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - flit-core >=3.8.0,<4
     - pip
-    - python >=3.6
+    - python {{ python_min }}
   run:
     - arpeggio >=2.0.0
-    - click >=7.0,<8.0
-    - python >=3.6
+    - click >=7.0,<9.0
+    - importlib-metadata
+    - python >={{ python_min }}
 
 test:
   source_files:
@@ -52,6 +53,7 @@ test:
     - jinja2
     - pip
     - pytest
+    - python {{ python_min }}
 
 about:
   home: http://textx.github.io/textX/
