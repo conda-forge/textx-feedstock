@@ -23,7 +23,8 @@ requirements:
     - python {{ python_min }}
   run:
     - arpeggio >=2.0.0
-    - click >=7.0,<8.0
+    - click >=7.0,<9.0
+    - importlib-metadata
     - python >={{ python_min }}
 
 test:
