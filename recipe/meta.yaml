@@ -1,5 +1,5 @@
 {% set name = "textx" %}
-{% set version = "4.1.0" %}
+{% set version = "4.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 37b4f0c455452e27cc0f13d40777b5d20549eaa871311b26e2ed83c019456692
+  sha256: 953fdd495195a26ca7af6fb1eeadd7ecf927f0a9d3821716f782c957c5b0e2ab
 
 build:
   entry_points:
     - textx = textx.cli:textx
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   host:
