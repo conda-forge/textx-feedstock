@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: textx
-  version: 4.2.0
+  version: "4.2.1"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: 953fdd495195a26ca7af6fb1eeadd7ecf927f0a9d3821716f782c957c5b0e2ab
+  sha256: 5dbeed35de960ef32364523fcda25472db6fa32e3377e0e71aee03ef12519c31
 
 build:
   number: 0
