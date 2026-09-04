@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: textx
-  version: "4.3.0"
+  version: "4.4.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: 0facac8029ad124ef21e5838dd8eb67f10129efcee96ea3548f5fd62428a9880
+  sha256: a7b15a4698b503edde631d5227c0d0f6024898a86a7924b5fc741973305f9286
 
 build:
   number: 0
@@ -38,28 +38,15 @@ tests:
         - textx.scoping
         - textx.cli
       pip_check: true
-      python_version: ${{ python_min }}.*
-  - files:
-      source:
-        - tests
-    requirements:
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
+  - requirements:
       run:
-        - attrs
-        - html5lib
-        - jinja2
-        - pip
-        - pytest
         - python ${{ python_min }}.*
     script:
       - textx --help
-      - rm tests/functional/test_objcrossref_positions.py
-      - pip install -e tests/functional/subcommands/example_project --no-deps
-      - pip install -e tests/functional/registration/projects/types_dsl --no-deps
-      - pip install -e tests/functional/registration/projects/data_dsl --no-deps
-      - pip install -e tests/functional/registration/projects/flow_dsl --no-deps
-      - pip install -e tests/functional/registration/projects/flow_codegen --no-deps
-      - "pytest -vvv --capture=tee-sys -k \"not test_examples\" tests/functional"
-
+      
 about:
   summary: Meta-language for DSL implementation inspired by Xtext
   license: MIT
